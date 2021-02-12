@@ -6,9 +6,38 @@ import "os"
 import "net/rpc"
 import "net/http"
 
+const (
+	idle = iota
+	progress
+	completed
+)
+
+type state int
+
+type Task struct{
+	current_state state
+	identity string
+}
+
+func newTask() *Task{
+	return &Task{idle, ""}
+}
+
+type MapTask struct{
+	*Task
+	fileName string
+}
+
+type ReduceTask struct{
+	*Task
+	fileName string
+}
 
 type Master struct {
 	// Your definitions here.
+	nReduce int
+	MapTasks []MapTask
+	ReduceTasks []ReduceTask
 
 }
 
@@ -49,8 +78,7 @@ func (m *Master) Done() bool {
 	ret := false
 
 	// Your code here.
-
-
+	// TODO: if all the Map / Reduce Tasks are done, then return true
 	return ret
 }
 
@@ -63,7 +91,10 @@ func MakeMaster(files []string, nReduce int) *Master {
 	m := Master{}
 
 	// Your code here.
-
+	m.nReduce = nReduce
+	for _, fileName := range files{
+		m.MapTasks = append(m.MapTasks, MapTask{newTask(), fileName})
+	}
 
 	m.server()
 	return &m
