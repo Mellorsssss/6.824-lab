@@ -5,6 +5,7 @@ import "net"
 import "os"
 import "net/rpc"
 import "net/http"
+import "errors"
 
 const (
 	idle = iota
@@ -18,6 +19,7 @@ type Task struct{
 	current_state state
 	identity string
 }
+
 
 func newTask() *Task{
 	return &Task{idle, ""}
@@ -41,6 +43,20 @@ type Master struct {
 
 }
 
+func (m *Master)findIdleTask() *TaskType{
+	for _, task := range m.MapTasks{
+		if task.current_state == idle{
+			return &TaskType{"Map", task.fileName}
+		}
+	} 
+
+	for _, task := range m.ReduceTasks{
+		if task.current_state == idle{
+			return &TaskType{"Reduce", task.fileName}
+		}
+	}
+	return nil
+}
 // Your code here -- RPC handlers for the worker to call.
 
 //
@@ -53,7 +69,14 @@ func (m *Master) Example(args *ExampleArgs, reply *ExampleReply) error {
 	return nil
 }
 
-
+func (m* Master) GetMapTask(args *CallForWork, reply *TaskType)error{
+	if args.Valid == true{
+		reply = m.findIdleTask()
+		return nil
+	}else{
+		return errors.New("RPC INVALID.")
+	}
+}
 //
 // start a thread that listens for RPCs from worker.go
 //

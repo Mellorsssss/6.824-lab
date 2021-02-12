@@ -24,6 +24,14 @@ type ExampleReply struct {
 
 // Add your RPC definitions here.
 
+type TaskType struct{
+	Tasktype string
+	FileName string
+}
+
+type CallForWork struct{
+	Valid bool 
+}
 
 // Cook up a unique-ish UNIX-domain socket name
 // in /var/tmp, for the master.
