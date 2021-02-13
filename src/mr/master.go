@@ -1,6 +1,9 @@
 package mr
 
-import "log"
+import (
+	"log"
+	"time"
+)
 import "net"
 import "os"
 import "net/rpc"
@@ -47,6 +50,14 @@ func (t *Task) SetTaskIdle() {
 }
 
 func (t *Task) SetTaskInProgress() {
+	checkCompleteTimer := time.NewTimer(time.Second*10)
+	go func(){
+		<-checkCompleteTimer.C
+		if !t.CheckTaskCompleted(){
+			fmt.Printf("Worker may crash!\n")
+			t.SetTaskIdle()
+		}
+	} ()
 	t.SetTaskState(progress)
 }
 
@@ -103,12 +114,14 @@ func (m *Master) allocateIdleTask() TaskType {
 				allReduceComplete = false
 			}
 		}
+
+		if allReduceComplete {
+			return TaskType{"Done", "", -1, -1}
+			// once the worker get the done task, it'll terminate itself
+		}
 	}
 
-	if allReduceComplete {
-		return TaskType{"Done", "", -1, -1}
-		// once the worker get the done task, it'll terminate itself
-	}
+
 
 	return TaskType{"None", "", -1, -1}
 }
@@ -184,13 +197,15 @@ func (m *Master) Done() bool {
 
 	// Your code here.
 	// TODO: if all the Map / Reduce Tasks are done, then return true
+	unfinishNum :=0
 	for _, task := range m.ReduceTasks {
-		if !task.CheckTaskCompleted() {
+		if !task.CheckTaskCompleted(){
+			unfinishNum ++
 			ret = false
-			break
 		}
 	}
 
+	fmt.Printf("Remain %v to finish.\n", unfinishNum)
 	return ret
 }
 

@@ -59,7 +59,7 @@ func Worker(mapf func(string, string) []KeyValue,
 			FinshTask("Reduce", taskType.TaskNum)
 		} else if taskType.Tasktype == "Done" {
 			fmt.Println("Work is done.Exit.")
-			return
+			os.Exit(1)
 		}
 		time.Sleep(time.Second)
 	}
@@ -83,7 +83,6 @@ func execMapApp(t TaskType, mapf func(string, string) []KeyValue) {
 		reduceBuckets[reduceTaskNum] = append(reduceBuckets[reduceTaskNum], kv)
 	}
 
-	fmt.Println("===Map Task: computation complete.===")
 	for index, kvarr := range reduceBuckets {
 		file, err := os.Create(generateFileName(t.TaskNum, index))
 		if err != nil {
@@ -91,7 +90,7 @@ func execMapApp(t TaskType, mapf func(string, string) []KeyValue) {
 			continue
 		}
 		enc := json.NewEncoder(file)
-		fmt.Printf("Map Task Number: %v, Reduce Task Number: %v\n", t.TaskNum, index)
+		//fmt.Printf("Map Task Number: %v, Reduce Task Number: %v\n", t.TaskNum, index)
 		for _, kv := range kvarr {
 			err := enc.Encode(&kv)
 			if err != nil {
@@ -101,7 +100,6 @@ func execMapApp(t TaskType, mapf func(string, string) []KeyValue) {
 		}
 	}
 
-	fmt.Println("===Map Task: Interminate keys generation complete.===")
 }
 
 func getReduceFiles(reduceTaskNum int) []string {
@@ -115,7 +113,6 @@ func getReduceFiles(reduceTaskNum int) []string {
 	var validFileName = regexp.MustCompile(strings.Join([]string{`in-[0-9]+-`, strconv.Itoa(reduceTaskNum)}, ""))
 	var res []string
 	for i := range fileInfoList {
-		fmt.Println(fileInfoList[i].Name()) //打印当前文件或目录下的文件或目录名
 		if validFileName.MatchString(fileInfoList[i].Name()) {
 			res = append(res, fileInfoList[i].Name())
 		}
