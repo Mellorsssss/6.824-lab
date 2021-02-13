@@ -18,84 +18,101 @@ const (
 
 type state int
 
-type Task struct{
-	current_state state
-	identity string
-	mux      sync.Mutex 
+type Task struct {
+	currentState state
+	identity     string
+	mux          sync.Mutex
 }
 
 func (t *Task) CheckTaskIdle() bool {
 	t.mux.Lock()
 	defer t.mux.Unlock()
-	return t.current_state == idle
+	return t.currentState == idle
 }
 
 func (t *Task) CheckTaskCompleted() bool {
 	t.mux.Lock()
 	defer t.mux.Unlock()
-	return t.current_state == completed
+	return t.currentState == completed
 }
 
-func (t *Task) SetTaskState(State state){
+func (t *Task) SetTaskState(State state) {
 	t.mux.Lock()
-	t.current_state = State
+	t.currentState = State
 	t.mux.Unlock()
 }
 
-func (t *Task) SetTaskIdle(){
+func (t *Task) SetTaskIdle() {
 	t.SetTaskState(idle)
 }
 
-func (t *Task) SetTaskInProgress(){
+func (t *Task) SetTaskInProgress() {
 	t.SetTaskState(progress)
 }
 
-func (t *Task) SetTaskCompleted(){
+func (t *Task) SetTaskCompleted() {
 	t.SetTaskState(completed)
 }
 
-func newTask() *Task{
-	return &Task{current_state:idle, identity:""}
+func newTask() *Task {
+	return &Task{currentState: idle, identity: ""}
 }
 
-type MapTask struct{
+type MapTask struct {
 	*Task
 	fileName string
-	tasknum int
+	tasknum  int
 }
 
-type ReduceTask struct{
+type ReduceTask struct {
 	*Task
-	fileName string
 	tasknum int
 }
 
 /* data structure for Master node and operations on it*/
 type Master struct {
 	// Your definitions here.
-	nReduce int
-	MapTasks []MapTask
+	nReduce     int
+	MapTasks    []MapTask
 	ReduceTasks []ReduceTask
-
 }
 
-func (m *Master)allocateIdleTask() TaskType{
-	for index, task := range m.MapTasks{
-		if task.CheckTaskIdle(){
+func (m *Master) allocateIdleTask() TaskType {
+	allMapComplete := true
+	for index, task := range m.MapTasks {
+		if task.CheckTaskIdle() {
+			allMapComplete = false
 			task.SetTaskInProgress()
 			return TaskType{"Map", task.fileName, index, m.nReduce}
 		}
-	} 
 
-	for index, task := range m.ReduceTasks{
-		if task.CheckTaskIdle(){
-			task.SetTaskInProgress()
-			return TaskType{"Reduce", task.fileName, index, m.nReduce}
+		if !task.CheckTaskCompleted() {
+			allMapComplete = false
 		}
 	}
 
-	return TaskType{"Done", "", -1, -1} // once the worker get the done task, it'll terminate itself
+	allReduceComplete := true
+	if allMapComplete {
+		for index, task := range m.ReduceTasks {
+			if task.CheckTaskIdle() {
+				task.SetTaskInProgress()
+				return TaskType{"Reduce", "", index, m.nReduce}
+			}
+
+			if !task.CheckTaskCompleted() {
+				allReduceComplete = false
+			}
+		}
+	}
+
+	if allReduceComplete {
+		return TaskType{"Done", "", -1, -1}
+		// once the worker get the done task, it'll terminate itself
+	}
+
+	return TaskType{"None", "", -1, -1}
 }
+
 // Your code here -- RPC handlers for the worker to call.
 
 //
@@ -108,19 +125,19 @@ func (m *Master) Example(args *ExampleArgs, reply *ExampleReply) error {
 	return nil
 }
 
-func (m *Master) GetTask(args *CallForWork, reply *TaskType)error{
-	if args.Valid == true{
+func (m *Master) GetTask(args *CallForWork, reply *TaskType) error {
+	if args.Valid == true {
 		*reply = m.allocateIdleTask()
 		return nil
 	}
-	
+
 	return errors.New("RPC INVALID.")
-	
+
 }
 
-func (m *Master) CompleteTask(args *WorkComplete, reply *NilReply )error {
-	if args.Tasktype == "Map"{
-		if args.TaskNum < 0 || args.TaskNum >len(m.MapTasks){
+func (m *Master) CompleteTask(args *WorkComplete, reply *NilReply) error {
+	if args.Tasktype == "Map" {
+		if args.TaskNum < 0 || args.TaskNum > len(m.MapTasks) {
 			fmt.Printf("Wrong index of map task :%v\n", args.TaskNum)
 			return errors.New("Wrong index of map task.")
 		}
@@ -129,8 +146,8 @@ func (m *Master) CompleteTask(args *WorkComplete, reply *NilReply )error {
 		return nil
 	}
 
-	if args.Tasktype == "Reduce"{
-		if args.TaskNum < 0 || args.TaskNum >len(m.ReduceTasks){
+	if args.Tasktype == "Reduce" {
+		if args.TaskNum < 0 || args.TaskNum > len(m.ReduceTasks) {
 			fmt.Printf("Wrong index of reduce task :%v\n", args.TaskNum)
 			return errors.New("Wrong index of reduce task.")
 		}
@@ -140,7 +157,8 @@ func (m *Master) CompleteTask(args *WorkComplete, reply *NilReply )error {
 	}
 
 	return errors.New("Unexpected type of task.")
-} 
+}
+
 //
 // start a thread that listens for RPCs from worker.go
 //
@@ -162,10 +180,17 @@ func (m *Master) server() {
 // if the entire job has finished.
 //
 func (m *Master) Done() bool {
-	ret := false
+	ret := true
 
 	// Your code here.
 	// TODO: if all the Map / Reduce Tasks are done, then return true
+	for _, task := range m.ReduceTasks {
+		if !task.CheckTaskCompleted() {
+			ret = false
+			break
+		}
+	}
+
 	return ret
 }
 
@@ -179,8 +204,12 @@ func MakeMaster(files []string, nReduce int) *Master {
 
 	// Your code here.
 	m.nReduce = nReduce
-	for index, fileName := range files{
+	for index, fileName := range files {
 		m.MapTasks = append(m.MapTasks, MapTask{newTask(), fileName, index})
+	}
+
+	for count := 0; count < nReduce; count++ {
+		m.ReduceTasks = append(m.ReduceTasks, ReduceTask{newTask(), count})
 	}
 
 	m.server()

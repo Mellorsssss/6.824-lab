@@ -1,6 +1,9 @@
 package mr
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 import "log"
 import "net/rpc"
 import "hash/fnv"
@@ -9,7 +12,8 @@ import "io/ioutil"
 import "strings"
 import "strconv"
 import "encoding/json"
-
+import "time"
+import "regexp"
 
 //
 // Map functions return a slice of KeyValue.
@@ -18,6 +22,12 @@ type KeyValue struct {
 	Key   string
 	Value string
 }
+
+type ByKey []KeyValue
+
+func (a ByKey) Len() int           { return len(a) }
+func (a ByKey) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a ByKey) Less(i, j int) bool { return a[i].Key < a[j].Key }
 
 //
 // use ihash(key) % NReduce to choose the reduce
@@ -29,7 +39,6 @@ func ihash(key string) int {
 	return int(h.Sum32() & 0x7fffffff)
 }
 
-
 //
 // main/mrworker.go calls this function.
 //
@@ -40,20 +49,23 @@ func Worker(mapf func(string, string) []KeyValue,
 
 	// uncomment to send the Example RPC to the master.
 	// CallExample()
-	for{
+	for {
 		taskType := CallTask()
-		if taskType.Tasktype == "Map"{
+		if taskType.Tasktype == "Map" {
 			execMapApp(taskType, mapf)
-		}else if taskType.Tasktype == "Reduce"{
+			FinshTask("Map", taskType.TaskNum)
+		} else if taskType.Tasktype == "Reduce" {
 			execReduceApp(taskType, reducef)
-		}else if taskType.Tasktype == "Done"{
+			FinshTask("Reduce", taskType.TaskNum)
+		} else if taskType.Tasktype == "Done" {
 			fmt.Println("Work is done.Exit.")
 			return
 		}
+		time.Sleep(time.Second)
 	}
 }
 
-func execMapApp(t TaskType, mapf func(string, string)[]KeyValue){
+func execMapApp(t TaskType, mapf func(string, string) []KeyValue) {
 	file, err := os.Open(t.FileName)
 	if err != nil {
 		log.Fatalf("cannot open %v", t.FileName)
@@ -64,25 +76,25 @@ func execMapApp(t TaskType, mapf func(string, string)[]KeyValue){
 	}
 	file.Close()
 	kva := mapf(t.FileName, string(content))
-	
+
 	reduceBuckets := make([][]KeyValue, t.Mod)
-	for _, kv :=range kva{
+	for _, kv := range kva {
 		reduceTaskNum := ihash(kv.Key) % t.Mod
 		reduceBuckets[reduceTaskNum] = append(reduceBuckets[reduceTaskNum], kv)
 	}
 
 	fmt.Println("===Map Task: computation complete.===")
-	for index, kvarr := range reduceBuckets{
-		file,err := os.Create(generateFileName(t.TaskNum , index))
-		if err != nil{
-			fmt.Printf("Create file failure: %s", generateFileName(t.TaskNum , index))
+	for index, kvarr := range reduceBuckets {
+		file, err := os.Create(generateFileName(t.TaskNum, index))
+		if err != nil {
+			fmt.Printf("Create file failure: %s", generateFileName(t.TaskNum, index))
 			continue
 		}
 		enc := json.NewEncoder(file)
-		fmt.Printf("Map Task Number: %v, Reduce Task Number: %v",t.TaskNum ,index)
-		for _, kv := range kvarr{
+		fmt.Printf("Map Task Number: %v, Reduce Task Number: %v\n", t.TaskNum, index)
+		for _, kv := range kvarr {
 			err := enc.Encode(&kv)
-			if err != nil{
+			if err != nil {
 				fmt.Println("Encoding error in map phase.")
 				continue
 			}
@@ -92,13 +104,85 @@ func execMapApp(t TaskType, mapf func(string, string)[]KeyValue){
 	fmt.Println("===Map Task: Interminate keys generation complete.===")
 }
 
-func execReduceApp(t TaskType, reducef func(string, []string) string){
-	return 
+func getReduceFiles(reduceTaskNum int) []string {
+	pwd, _ := os.Getwd()
+	fileInfoList, err := ioutil.ReadDir(pwd)
+	if err != nil {
+		log.Fatal(err)
+		return []string{}
+	}
+
+	var validFileName = regexp.MustCompile(strings.Join([]string{`in-[0-9]+-`, strconv.Itoa(reduceTaskNum)}, ""))
+	var res []string
+	for i := range fileInfoList {
+		fmt.Println(fileInfoList[i].Name()) //打印当前文件或目录下的文件或目录名
+		if validFileName.MatchString(fileInfoList[i].Name()) {
+			res = append(res, fileInfoList[i].Name())
+		}
+	}
+
+	return res
 }
 
-func generateFileName(mapTaskNum int, reduceTaskNum int) string{
+func getIntermediate(reduceTaskNum int)[]KeyValue{
+	fileNameList := getReduceFiles(reduceTaskNum)
+	intermediate := []KeyValue{}
+	for _, fileName := range fileNameList{
+		file, err := os.Open(fileName)
+		if err != nil{
+			fmt.Printf("Can't open %v.\n", fileName)
+			continue
+		}
+
+		dec := json.NewDecoder(file)
+		for {
+			var kv KeyValue
+			if err := dec.Decode(&kv); err != nil {
+				break
+			}
+			intermediate = append(intermediate, kv)
+		}
+	}
+
+	return intermediate
+}
+
+func execReduceApp(t TaskType, reducef func(string, []string) string) {
+	intermediate := getIntermediate(t.TaskNum)
+	sort.Sort(ByKey(intermediate))
+
+	oname := "mr-out-"+strconv.Itoa(t.TaskNum)
+	ofile, _ := os.Create(oname)
+
+	//
+	// call Reduce on each distinct key in intermediate[],
+	// and print the result to mr-out-0.
+	//
+	i := 0
+	for i < len(intermediate) {
+		j := i + 1
+		for j < len(intermediate) && intermediate[j].Key == intermediate[i].Key {
+			j++
+		}
+		values := []string{}
+		for k := i; k < j; k++ {
+			values = append(values, intermediate[k].Value)
+		}
+		output := reducef(intermediate[i].Key, values)
+
+		// this is the correct format for each line of Reduce output.
+		fmt.Fprintf(ofile, "%v %v\n", intermediate[i].Key, output)
+
+		i = j
+	}
+
+	ofile.Close()
+}
+
+func generateFileName(mapTaskNum int, reduceTaskNum int) string {
 	return strings.Join([]string{"in", strconv.Itoa(mapTaskNum), strconv.Itoa(reduceTaskNum)}, "-")
 }
+
 //
 // example function to show how to make an RPC call to the master.
 //
@@ -124,15 +208,8 @@ func CallExample() {
 
 func CallTask() TaskType {
 	args := CallForWork{true}
-
 	reply := TaskType{}
-
-	// send the RPC request, wait for the reply.
 	call("Master.GetTask", &args, &reply)
-
-	// reply.Y should be 100.
-	fmt.Printf("reply: %v %v\n", reply.Tasktype, reply.FileName)
-
 	return reply
 }
 
@@ -141,8 +218,8 @@ func FinshTask(tasktype string, tasknum int) {
 	reply := NilReply{}
 
 	call("Master.CompleteTask", &args, &reply)
-	fmt.Printf("%v %v Task complete.\n",tasktype, tasknum)
 }
+
 //
 // send an RPC request to the master, wait for the response.
 // usually returns true.
