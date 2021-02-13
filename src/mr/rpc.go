@@ -27,6 +27,8 @@ type ExampleReply struct {
 type TaskType struct{
 	Tasktype string
 	FileName string
+	TaskNum int
+	Mod int // nReduce 
 }
 
 type CallForWork struct{

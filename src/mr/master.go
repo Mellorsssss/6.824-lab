@@ -6,6 +6,7 @@ import "os"
 import "net/rpc"
 import "net/http"
 import "errors"
+import "sync"
 
 const (
 	idle = iota
@@ -18,6 +19,19 @@ type state int
 type Task struct{
 	current_state state
 	identity string
+	mux      sync.Mutex 
+}
+
+func (t *Task) CheckTaskIdle() bool {
+	t.mux.Lock()
+	defer t.mux.Unlock()
+	return t.current_state == idle
+}
+
+func (t *Task) CheckTaskCompleted() bool {
+	t.mux.Lock()
+	defer t.mux.Unlock()
+	return t.current_state == completed
 }
 
 
@@ -28,11 +42,13 @@ func newTask() *Task{
 type MapTask struct{
 	*Task
 	fileName string
+	tasknum int
 }
 
 type ReduceTask struct{
 	*Task
 	fileName string
+	tasknum int
 }
 
 type Master struct {
@@ -43,19 +59,20 @@ type Master struct {
 
 }
 
-func (m *Master)findIdleTask() *TaskType{
-	for _, task := range m.MapTasks{
-		if task.current_state == idle{
-			return &TaskType{"Map", task.fileName}
+func (m *Master)findIdleTask() TaskType{
+	for index, task := range m.MapTasks{
+		if task.CheckTaskIdle(){
+			return TaskType{"Map", task.fileName, index, m.nReduce}
 		}
 	} 
 
-	for _, task := range m.ReduceTasks{
-		if task.current_state == idle{
-			return &TaskType{"Reduce", task.fileName}
+	for index, task := range m.ReduceTasks{
+		if task.CheckTaskIdle(){
+			return TaskType{"Reduce", task.fileName, index, m.nReduce}
 		}
 	}
-	return nil
+
+	return TaskType{"Done", "", -1, -1} // once the worker get the done task, it'll terminate itself
 }
 // Your code here -- RPC handlers for the worker to call.
 
@@ -69,9 +86,9 @@ func (m *Master) Example(args *ExampleArgs, reply *ExampleReply) error {
 	return nil
 }
 
-func (m* Master) GetMapTask(args *CallForWork, reply *TaskType)error{
+func (m* Master) GetTask(args *CallForWork, reply *TaskType)error{
 	if args.Valid == true{
-		reply = m.findIdleTask()
+		*reply = m.findIdleTask()
 		return nil
 	}else{
 		return errors.New("RPC INVALID.")

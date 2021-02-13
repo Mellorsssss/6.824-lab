@@ -4,6 +4,11 @@ import "fmt"
 import "log"
 import "net/rpc"
 import "hash/fnv"
+import "os"
+import "io/ioutil"
+import "strings"
+import "strconv"
+import "json"
 
 
 //
@@ -35,9 +40,60 @@ func Worker(mapf func(string, string) []KeyValue,
 
 	// uncomment to send the Example RPC to the master.
 	// CallExample()
-
+	for{
+		taskType := CallTask()
+		if taskType.Tasktype == "Map"{
+			execMapApp(taskType, mapf)
+		}else if taskType.Tasktype == "Reduce"{
+			execReduceApp(taskType, reducef)
+		}else if taskType.Tasktype == "Done"{
+			fmt.Println("Work is done.Exit.")
+			return
+		}
+	}
 }
 
+func execMapApp(t TaskType, mapf func(string, string)[]KeyValue){
+	file, err := os.Open(t.FileName)
+	if err != nil {
+		log.Fatalf("cannot open %v", t.FileName)
+	}
+	content, err := ioutil.ReadAll(file)
+	if err != nil {
+		log.Fatalf("cannot read %v", t.FileName)
+	}
+	file.Close()
+	kva := mapf(t.FileName, string(content))
+	
+	reduceBuckets := make([][]KeyValue, t.Mod)
+	for _, kv :=range kva{
+		reduceTaskNum := ihash(kv.Key) % t.Mod
+		reduceBuckets[reduceTaskNum] = append(reduceBuckets[reduceTaskNum], kv)
+	}
+
+	fmt.Println("===Map Task: computation complete.===")
+	for index, kvarr := range reduceBuckets{
+		enc := json.NewEncoder(generateFileName(t.TaskNum , index))
+		fmt.Println("Map Task Number: %v, Reduce Task Number: %v",t.TaskNum ,index)
+		for _, kv := kvarr{
+			err := enc.Encode(&kv)
+			if err != nil{
+				fmt.Println("Encoding error in map phase.")
+				continue
+			}
+		}
+	}
+
+	fmt.Println("===Map Task: Interminate keys generation complete.===")
+}
+
+func execReduceApp(t TaskType, reducef func(string, []string) string){
+	return 
+}
+
+func generateFileName(mapTaskNum int, reduceTaskNum int) string{
+	return strings.Join([]string{"mr", strconv.Itoa(mapTaskNum), strconv.Itoa(reduceTaskNum)}, "-")
+}
 //
 // example function to show how to make an RPC call to the master.
 //
@@ -59,6 +115,20 @@ func CallExample() {
 
 	// reply.Y should be 100.
 	fmt.Printf("reply.Y %v\n", reply.Y)
+}
+
+func CallTask() TaskType {
+	args := CallForWork{true}
+
+	reply := TaskType{}
+
+	// send the RPC request, wait for the reply.
+	call("Master.GetTask", &args, &reply)
+
+	// reply.Y should be 100.
+	fmt.Printf("reply: %v %v\n", reply.Tasktype, reply.FileName)
+
+	return reply
 }
 
 //
