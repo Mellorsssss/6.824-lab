@@ -35,6 +35,15 @@ type CallForWork struct{
 	Valid bool 
 }
 
+type WorkComplete struct{
+	Tasktype string
+	TaskNum int
+}
+
+type NilReply struct{
+	
+}
+
 // Cook up a unique-ish UNIX-domain socket name
 // in /var/tmp, for the master.
 // Can't use the current directory since

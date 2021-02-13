@@ -8,7 +8,7 @@ import "os"
 import "io/ioutil"
 import "strings"
 import "strconv"
-import "json"
+import "encoding/json"
 
 
 //
@@ -73,9 +73,14 @@ func execMapApp(t TaskType, mapf func(string, string)[]KeyValue){
 
 	fmt.Println("===Map Task: computation complete.===")
 	for index, kvarr := range reduceBuckets{
-		enc := json.NewEncoder(generateFileName(t.TaskNum , index))
-		fmt.Println("Map Task Number: %v, Reduce Task Number: %v",t.TaskNum ,index)
-		for _, kv := kvarr{
+		file,err := os.Create(generateFileName(t.TaskNum , index))
+		if err != nil{
+			fmt.Printf("Create file failure: %s", generateFileName(t.TaskNum , index))
+			continue
+		}
+		enc := json.NewEncoder(file)
+		fmt.Printf("Map Task Number: %v, Reduce Task Number: %v",t.TaskNum ,index)
+		for _, kv := range kvarr{
 			err := enc.Encode(&kv)
 			if err != nil{
 				fmt.Println("Encoding error in map phase.")
@@ -92,7 +97,7 @@ func execReduceApp(t TaskType, reducef func(string, []string) string){
 }
 
 func generateFileName(mapTaskNum int, reduceTaskNum int) string{
-	return strings.Join([]string{"mr", strconv.Itoa(mapTaskNum), strconv.Itoa(reduceTaskNum)}, "-")
+	return strings.Join([]string{"in", strconv.Itoa(mapTaskNum), strconv.Itoa(reduceTaskNum)}, "-")
 }
 //
 // example function to show how to make an RPC call to the master.
@@ -131,6 +136,13 @@ func CallTask() TaskType {
 	return reply
 }
 
+func FinshTask(tasktype string, tasknum int) {
+	args := WorkComplete{tasktype, tasknum}
+	reply := NilReply{}
+
+	call("Master.CompleteTask", &args, &reply)
+	fmt.Printf("%v %v Task complete.\n",tasktype, tasknum)
+}
 //
 // send an RPC request to the master, wait for the response.
 // usually returns true.
