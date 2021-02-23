@@ -1,0 +1,14 @@
+Test (2A): initial election ...
+2021/02/23 21:59:53 1 : time is out
+2021/02/23 21:59:53 1 : time is out
+2021/02/23 21:59:53 1 begins the election.
+2021/02/23 21:59:53 2 : time is out
+2021/02/23 21:59:53 2 : time is out
+2021/02/23 21:59:53 2 : time is out
+2021/02/23 21:59:53 2 : time is out
+2021/02/23 21:59:53 2 begins the election.
+2021/02/23 21:59:53 2 begins the election.
+2021/02/23 21:59:53 2 begins the election.
+2021/02/23 21:59:53 2 begins the election.
+signal: interrupt
+FAIL	_/home/cs18/6.824/src/raft	61.696s
