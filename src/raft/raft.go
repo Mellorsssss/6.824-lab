@@ -228,25 +228,26 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
 	reply.Term = rf.currentTerm
-	// rule 1
+	// reject the RPC if args.Term is smaller
 	if args.Term < rf.currentTerm {
 		reply.Success = false
 		return
 	}
 
+	// args.Term is at least as large as currentTerm, so convert to Follower
 	if rf.state != Follower {
 		rf.state = Follower
 	}
 
-	// rule 2
-	if len(args.Entries) == 0 || len(rf.log) < args.PrevLogIndex || rf.log[args.PrevLogIndex-1].Term != args.PrevLogTerm {
+	// if no LogEntry matches, return false
+	if len(rf.log) <= args.PrevLogIndex || rf.log[args.PrevLogIndex].Term != args.PrevLogTerm {
 		reply.Success = false
 		return
 	}
 
 	// TODO :rule 3  & rule 4
 
-	// rule 5
+	// update commitIndex
 	if args.LeaderCommit > rf.commitIndex {
 		if len(args.Entries) > 0 {
 			if args.Entries[len(args.Entries)-1].Index > args.LeaderCommit {
@@ -273,6 +274,9 @@ func (rf *Raft) sendHeartBeats() {
 	rf.mu.Lock()
 	copyTerm := rf.currentTerm
 	copyCommitIndex := rf.commitIndex
+	logLen := len(rf.log)
+	copyPrevLogIndex := logLen-1
+	copyPrevLogTerm :=rf.log[logLen-1].Term
 	rf.mu.Unlock()
 	for ind := range rf.peers {
 		if ind == rf.me {
@@ -283,9 +287,8 @@ func (rf *Raft) sendHeartBeats() {
 			args := AppendEntriesArgs{
 				copyTerm,
 				rf.me,
-				0, 0, make([]LogEntry, 0), copyCommitIndex}
-			reply := AppendEntriesReply{
-				0, false}
+				copyPrevLogIndex, copyPrevLogTerm, make([]LogEntry, 0), copyCommitIndex}
+			reply := AppendEntriesReply{}
 			ok := rf.sendAppendEntries(tem_ind, &args, &reply)
 			if !ok {
 				return
@@ -293,6 +296,7 @@ func (rf *Raft) sendHeartBeats() {
 
 			rf.mu.Lock()
 			defer rf.mu.Unlock()
+			// check the assumptions
 			if rf.currentTerm != copyTerm || rf.state != Leader {
 				return
 			}
@@ -327,8 +331,8 @@ func (rf *Raft) PeriodHeartBeats() {
 // do preparations and send RPC to all peers
 //
 func (rf *Raft) Election() {
-	rf.mu.Lock()
 	// preparation for elction
+	rf.mu.Lock()
 	rf.currentTerm++
 	rf.state = Candidate
 	rf.voteCount = 1
@@ -336,16 +340,12 @@ func (rf *Raft) Election() {
 	DPrintf("==ELECTION BEGIN== %v begins, term is %v.", rf.me, rf.currentTerm)
 	// copy the arguments for RPC
 	copyTerm := rf.currentTerm
-	lastLogIndex := 0
-	lastLogTerm := 0
-	if len(rf.log) > 0 {
-		lastLogIndex = rf.log[len(rf.log)-1].Index
-		lastLogTerm = rf.log[len(rf.log)-1].Term
-	} else {
-		lastLogIndex = 0
-		lastLogTerm = 0
-	}
+	logLen := len(rf.log)
+	lastLogIndex := rf.log[logLen-1].Index
+	lastLogTerm := rf.log[logLen-1].Term
 	rf.mu.Unlock()
+
+	// send RPC to all peers
 	for ind := range rf.peers {
 		if ind == rf.me {
 			continue
@@ -365,7 +365,6 @@ func (rf *Raft) Election() {
 
 			// check the assumptions, if fail, the quit
 			if rf.currentTerm != copyTerm || rf.state != Candidate {
-				return
 				return
 			}
 
@@ -397,28 +396,27 @@ func getRandElectionTimeout(min int, max int) func() int {
 }
 
 func (rf *Raft) CheckHeartBeats() {
-	randElectionTimeoutGen := getRandElectionTimeout(300, 500)
+	randElectionTimeout := getRandElectionTimeout(300, 500)
 	for {
 		if rf.killed() {
 			DPrintf("%v is killed.", rf.me)
 			return
 		}
 
-		election_timeout := randElectionTimeoutGen()
+		election_timeout := randElectionTimeout()
 		select {
 		case <-rf.heartBeatCh:
 			continue
 		case <-time.After(time.Millisecond * time.Duration(election_timeout)): // election timeout
+			// skip if as a leader
 			rf.mu.Lock()
-			// I'am the leader
 			if rf.state == Leader {
 				rf.mu.Unlock()
 				continue
 			}
-			// timeout and begin new election
-			rf.voteCount = 0
-			go rf.Election()
 			rf.mu.Unlock()
+			// timeout and begin new election
+			go rf.Election()
 		}
 	}
 }
@@ -501,6 +499,10 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	// initialize from state persisted before a crash
 	rf.readPersist(persister.ReadRaftState())
 
-	go rf.CheckHeartBeats() // start a background goroutine to handle state
+	// log[0] serve as a pioneer
+	rf.log = append(rf.log, LogEntry{0,0,nil})
+
+	// background goroutine to monitor heart beats, begin election
+	go rf.CheckHeartBeats()
 	return rf
 }
