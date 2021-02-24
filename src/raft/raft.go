@@ -363,7 +363,7 @@ func (rf* Raft)Election(){
 	rf.currentTerm ++
 	rf.state = Candidate
 	rf.voteCount = 1
-	rf.voteFor = -1
+	rf.voteFor = rf.me
 
 	// copy the arguments for RPC
 	copyTerm :=rf.currentTerm

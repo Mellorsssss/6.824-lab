@@ -1,36 +1,8 @@
-2021/02/24 13:12:03 0 : time is out, so begin the election
-2021/02/24 13:12:03 0 begins the election, there are 3 peers.
 Test (2A): initial election ...
-2021/02/24 13:12:03 0 send request to 2
-2021/02/24 13:12:03 0 send request to 1
-2021/02/24 13:12:03 1 : time is out, so begin the election
-2021/02/24 13:12:03 1 begins the election, there are 3 peers.
-2021/02/24 13:12:03 1 : time is out, so begin the election
-2021/02/24 13:12:03 1 send request to 2
-2021/02/24 13:12:03 1 send request to 0
-2021/02/24 13:12:03 1 begins the election, there are 3 peers.
-2021/02/24 13:12:03 1 send request to 0
-2021/02/24 13:12:03 1 send request to 2
-2021/02/24 13:12:03 2 Receve a request from 0
-2021/02/24 13:12:03 2 completes the processing of 0's RPC
-2021/02/24 13:12:03 2 Receve a request from 1
-2021/02/24 13:12:03 2 refuse to vote to 1
-2021/02/24 13:12:03 2 completes the processing of 1's RPC
-2021/02/24 13:12:03 2 Receve a request from 1
-2021/02/24 13:12:03 2 refuse to vote to 1
-2021/02/24 13:12:03 2 completes the processing of 1's RPC
-2021/02/24 13:12:03 1 Receve a request from 0
-2021/02/24 13:12:03 1 completes the processing of 0's RPC
-2021/02/24 13:12:03 0 Receve a request from 1
-2021/02/24 13:12:03 0 completes the processing of 1's RPC
-2021/02/24 13:12:03 fails the check
-2021/02/24 13:12:03 0 Receve a request from 1
-2021/02/24 13:12:03 0 completes the processing of 1's RPC
-2021/02/24 13:12:03 0 get one count, current vote is 2
-2021/02/24 13:12:03 0 becomes the leader.
-2021/02/24 13:12:03 fails the check
-2021/02/24 13:12:03 fails the check
-2021/02/24 13:12:03 1 get one count, current vote is 2
-2021/02/24 13:12:03 1 becomes the leader.
-signal: interrupt
-FAIL	_/home/cs18/6.824/src/raft	3.497s
+warning: Term changed even though there were no failures  ... Passed --   3.0  3  242   47308    0
+Test (2A): election after network failure ...
+--- FAIL: TestReElection2A (5.43s)
+    config.go:331: expected one leader, got none
+FAIL
+exit status 1
+FAIL	_/home/cs18/6.824/src/raft	8.464s
