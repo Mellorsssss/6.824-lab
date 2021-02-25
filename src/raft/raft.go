@@ -97,7 +97,7 @@ type Raft struct {
 func (rf *Raft) GetState() (int, bool) {
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
-	return rf.currentTerm, (rf.state == Leader)
+	return rf.currentTerm, rf.state == Leader
 }
 
 //
@@ -137,6 +137,8 @@ func (rf *Raft) readPersist(data []byte) {
 	//   rf.yyy = yyy
 	// }
 }
+
+// ================= RPC =====================
 
 //
 // example RequestVote RPC arguments structure.
@@ -245,16 +247,34 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 		return
 	}
 
-	// TODO :rule 3  & rule 4
+	for ind, log:= range args.Entries{
+		curIndex := args.Entries[ind].Index
+		// don't need to compare, append for once
+		if len(rf.log)<=curIndex{
+			rf.log = append(rf.log, args.Entries[ind:]...)
+			break
+		}
+
+		// delete all the logs that mismatch
+		if rf.log[curIndex].Term != log.Term{
+			rf.log = rf.log[:curIndex]
+			rf.log = append(rf.log, args.Entries[ind:]...)
+			break
+		}
+
+		rf.log[curIndex] = log
+	}
 
 	// update commitIndex
+	max := func(x int, y int)int{
+		if x>y{
+			return x
+		}
+		return y
+	}
 	if args.LeaderCommit > rf.commitIndex {
 		if len(args.Entries) > 0 {
-			if args.Entries[len(args.Entries)-1].Index > args.LeaderCommit {
-				rf.commitIndex = args.Entries[len(args.Entries)].Index
-			} else {
-				rf.commitIndex = args.LeaderCommit
-			}
+			rf.commitIndex = max(args.LeaderId, len(rf.log)-1)
 		} else {
 			rf.commitIndex = args.LeaderCommit
 		}
@@ -266,6 +286,10 @@ func (rf *Raft) sendAppendEntries(server int, args *AppendEntriesArgs, reply *Ap
 	ok := rf.peers[server].Call("Raft.AppendEntries", args, reply)
 	return ok
 }
+
+// ================= RPC =====================
+
+// ================= Heart Beats =============
 
 //
 // raft rules
@@ -282,14 +306,14 @@ func (rf *Raft) sendHeartBeats() {
 		if ind == rf.me {
 			continue
 		}
-		tem_ind := ind
+		temInd := ind
 		go func() {
 			args := AppendEntriesArgs{
 				copyTerm,
 				rf.me,
 				copyPrevLogIndex, copyPrevLogTerm, make([]LogEntry, 0), copyCommitIndex}
 			reply := AppendEntriesReply{}
-			ok := rf.sendAppendEntries(tem_ind, &args, &reply)
+			ok := rf.sendAppendEntries(temInd, &args, &reply)
 			if !ok {
 				return
 			}
@@ -326,6 +350,11 @@ func (rf *Raft) PeriodHeartBeats() {
 	}
 }
 
+// ================= Heart Beats =============
+
+// ================ Election =================
+
+
 //
 // invoked when raft node's election time elapses
 // do preparations and send RPC to all peers
@@ -351,14 +380,14 @@ func (rf *Raft) Election() {
 			continue
 		}
 
-		tem_ind := ind
+		temInd := ind
 
 		go func() {
 			args := RequestVoteArgs{
 				copyTerm, rf.me, lastLogIndex, lastLogTerm,
 			}
 			reply := RequestVoteReply{}
-			rf.sendRequestVote(tem_ind, &args, &reply)
+			rf.sendRequestVote(temInd, &args, &reply)
 
 			rf.mu.Lock()
 			defer rf.mu.Unlock()
@@ -373,7 +402,17 @@ func (rf *Raft) Election() {
 				rf.voteCount++
 				if rf.voteCount > len(rf.peers)/2 {
 					DPrintf("==ELECTION== %v becomes the leader.", rf.me)
+					// init the Leader states
 					rf.state = Leader
+					rf.nextIndex = make([]int, len(rf.peers))
+					rf.matchIndex = make([]int, len(rf.peers))
+					for ind := range rf.nextIndex{
+						rf.nextIndex[ind] = len(rf.log)
+					}
+					for ind := range rf.matchIndex{
+						rf.matchIndex[ind] = 0
+					}
+
 					go rf.PeriodHeartBeats()
 				}
 				return
@@ -403,11 +442,11 @@ func (rf *Raft) CheckHeartBeats() {
 			return
 		}
 
-		election_timeout := randElectionTimeout()
+		electionTimeout := randElectionTimeout()
 		select {
 		case <-rf.heartBeatCh:
 			continue
-		case <-time.After(time.Millisecond * time.Duration(election_timeout)): // election timeout
+		case <-time.After(time.Millisecond * time.Duration(electionTimeout)): // election timeout
 			// skip if as a leader
 			rf.mu.Lock()
 			if rf.state == Leader {
@@ -420,6 +459,147 @@ func (rf *Raft) CheckHeartBeats() {
 		}
 	}
 }
+
+// ================ Election =================
+
+// ================ Agreemnet ================
+
+// update the CommitIndex in O(log (len))
+func (rf *Raft) updateCommitIndex(){
+	check := func (val int) bool {
+		count :=0
+		for ind := range rf.peers{
+			if ind == rf.me{
+				continue
+			}
+
+			if rf.matchIndex[ind]>=val{
+				count++
+			}
+		}
+		return count >= len(rf.peers)/2
+	}
+
+	rf.mu.Lock()
+	if rf.state != Leader{
+		rf.mu.Unlock()
+		return
+	}
+	lhs:=0
+	rhs:=len(rf.log)
+	for lhs < rhs{
+		mid := (lhs+rhs+1)>>1
+		if check(mid){
+			DPrintf("==CHECK== %v succ.",mid)
+			lhs = mid
+		}else{
+			DPrintf("==CHECK== %v fail.",mid)
+			rhs = mid-1
+		}
+	}
+
+	DPrintf("==AGREEMENT== %v -> %v", rf.commitIndex, lhs)
+	rf.commitIndex = lhs
+	rf.mu.Unlock()
+}
+
+func (rf *Raft) getAgreement(){
+	for ind := range rf.peers {
+		if ind == rf.me {
+			continue
+		}
+		temInd := ind
+		// update in inner, for these values my change
+		rf.mu.Lock()
+		copyTerm := rf.currentTerm
+		copyCommitIndex := rf.commitIndex
+		copyPrevLogIndex := rf.nextIndex[temInd]-1
+		copyPrevLogTerm :=rf.log[copyPrevLogIndex].Term
+		// get the Entries
+		targetLog := rf.log[rf.nextIndex[temInd]:]
+		copyLog := make([]LogEntry, len(targetLog))
+		copy(copyLog, targetLog)
+		rf.mu.Unlock()
+		go func() {
+			for{
+				args := AppendEntriesArgs{
+					copyTerm,
+					rf.me,
+					copyPrevLogIndex, copyPrevLogTerm, copyLog, copyCommitIndex}
+				reply := AppendEntriesReply{}
+				ok := rf.sendAppendEntries(temInd, &args, &reply)
+				if !ok {
+					return
+				}
+
+				rf.mu.Lock()
+				//defer rf.mu.Unlock()
+
+				// check the assumptions
+				if rf.currentTerm != copyTerm || rf.state != Leader {
+					DPrintf("==AGREEMENT== fail check, prev term: %v, current term:%v", copyTerm, rf.currentTerm)
+					rf.mu.Unlock()
+					return
+				}
+
+				if reply.Success{
+					DPrintf("==AGREEMENT== %v -> %v o.[%v, %v -> %v, %v]", rf.me, temInd, rf.nextIndex[temInd], rf.matchIndex[temInd], len(rf.log), len(rf.log)-1)
+					rf.nextIndex[temInd] = len(rf.log)
+					rf.matchIndex[temInd] = len(rf.log)-1
+					rf.mu.Unlock()
+					rf.updateCommitIndex()
+					return
+				}
+
+				DPrintf("==AGREEMENT== %v -> %v x.", rf.me, temInd)
+				// fail for the out of date
+				if reply.Term > rf.currentTerm {
+					rf.currentTerm = reply.Term
+					rf.state = Follower
+					rf.mu.Unlock()
+					return
+				}
+
+				// updates the args
+				rf.nextIndex[temInd]-=1
+				DPrintf("==AGREEMENT== %v x.[%v %v -> %v %v]", temInd, copyPrevLogIndex, copyPrevLogTerm, copyPrevLogIndex-1, rf.log[copyPrevLogIndex-1].Term)
+				copyPrevLogIndex --
+				copyPrevLogTerm= rf.log[copyPrevLogIndex].Term
+
+				targetLog := rf.log[rf.nextIndex[temInd]:]
+				copyLog = make([]LogEntry, len(targetLog))
+				copy(copyLog, targetLog)
+				rf.mu.Unlock()
+			}
+
+		}()
+	}
+}
+
+//
+// background thread to send notify to the channel
+//
+func (rf *Raft) notifyCommit(){
+	lastNotify :=0
+	for{
+		//DPrintf("==AGREEMENT== check %v's commit", rf.me)
+		rf.mu.Lock()
+		if rf.killed(){
+			return
+		}
+
+		if rf.commitIndex>lastNotify{
+			for ind:= lastNotify+1;ind<=rf.commitIndex;ind++{
+				DPrintf("==AGREEMENT== %v commits %v.",rf.me, ind)
+				rf.applyChanel<-ApplyMsg{true,rf.log[ind].Command, ind}
+			}
+			lastNotify = rf.commitIndex
+		}
+		rf.mu.Unlock()
+		time.Sleep(100*time.Millisecond)
+	}
+}
+// ================ Agreemnet ================
 
 //
 // the service using Raft (e.g. a k/v server) wants to start
@@ -436,11 +616,21 @@ func (rf *Raft) CheckHeartBeats() {
 // the leader.
 //
 func (rf *Raft) Start(command interface{}) (int, int, bool) {
-	index := -1
-	term := -1
-	isLeader := true
+	rf.mu.Lock()
+	defer rf.mu.Unlock()
+	index := len(rf.log)
+	term := rf.currentTerm
+	isLeader := !rf.killed() && (rf.state== Leader)
 
-	// Your code here (2B).
+	// if not a Leader, return immediately
+	if !isLeader{
+		return index, term, isLeader
+	}
+
+	// start agreement on new command
+	rf.log = append(rf.log, LogEntry{term, index, command})
+	go rf.getAgreement()
+
 
 	return index, term, isLeader
 }
@@ -504,5 +694,6 @@ func Make(peers []*labrpc.ClientEnd, me int,
 
 	// background goroutine to monitor heart beats, begin election
 	go rf.CheckHeartBeats()
+	go rf.notifyCommit()
 	return rf
 }
