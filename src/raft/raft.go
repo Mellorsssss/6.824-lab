@@ -354,7 +354,6 @@ func (rf *Raft) PeriodHeartBeats() {
 
 // ================ Election =================
 
-
 //
 // invoked when raft node's election time elapses
 // do preparations and send RPC to all peers
@@ -462,7 +461,7 @@ func (rf *Raft) CheckHeartBeats() {
 
 // ================ Election =================
 
-// ================ Agreemnet ================
+// ================ Agreement ================
 
 // update the CommitIndex in O(log (len))
 func (rf *Raft) updateCommitIndex(){
@@ -490,10 +489,10 @@ func (rf *Raft) updateCommitIndex(){
 	for lhs < rhs{
 		mid := (lhs+rhs+1)>>1
 		if check(mid){
-			DPrintf("==CHECK== %v succ.",mid)
+			//DPrintf("==CHECK== %v succ.",mid)
 			lhs = mid
 		}else{
-			DPrintf("==CHECK== %v fail.",mid)
+			//DPrintf("==CHECK== %v fail.",mid)
 			rhs = mid-1
 		}
 	}
@@ -536,7 +535,7 @@ func (rf *Raft) getAgreement(){
 				//defer rf.mu.Unlock()
 
 				// check the assumptions
-				if rf.currentTerm != copyTerm || rf.state != Leader {
+				if rf.nextIndex[temInd]!=copyPrevLogIndex+1||rf.log[copyPrevLogIndex].Term !=copyPrevLogTerm||rf.currentTerm != copyTerm || rf.state != Leader {
 					DPrintf("==AGREEMENT== fail check, prev term: %v, current term:%v", copyTerm, rf.currentTerm)
 					rf.mu.Unlock()
 					return
@@ -551,7 +550,6 @@ func (rf *Raft) getAgreement(){
 					return
 				}
 
-				DPrintf("==AGREEMENT== %v -> %v x.", rf.me, temInd)
 				// fail for the out of date
 				if reply.Term > rf.currentTerm {
 					rf.currentTerm = reply.Term
@@ -562,7 +560,8 @@ func (rf *Raft) getAgreement(){
 
 				// updates the args
 				rf.nextIndex[temInd]-=1
-				DPrintf("==AGREEMENT== %v x.[%v %v -> %v %v]", temInd, copyPrevLogIndex, copyPrevLogTerm, copyPrevLogIndex-1, rf.log[copyPrevLogIndex-1].Term)
+				DPrintf("current nextInde[%v] is %v", temInd,rf.nextIndex[temInd])
+				DPrintf("==AGREEMENT== %v -> %v x.[%v %v -> %v %v]", rf.me, temInd, copyPrevLogIndex, copyPrevLogTerm, copyPrevLogIndex-1, rf.log[copyPrevLogIndex-1].Term)
 				copyPrevLogIndex --
 				copyPrevLogTerm= rf.log[copyPrevLogIndex].Term
 
@@ -599,7 +598,7 @@ func (rf *Raft) notifyCommit(){
 		time.Sleep(100*time.Millisecond)
 	}
 }
-// ================ Agreemnet ================
+// ================ Agreement ================
 
 //
 // the service using Raft (e.g. a k/v server) wants to start
