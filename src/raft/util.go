@@ -3,7 +3,14 @@ package raft
 import "log"
 
 // Debugging
-const Debug = 1
+var Debug = 1
+func EnableOnDebug(){
+	Debug = 1
+}
+
+func DisableOebug(){
+	Debug = 0
+}
 
 func DPrintf(format string, a ...interface{}) (n int, err error) {
 	if Debug > 0 {
