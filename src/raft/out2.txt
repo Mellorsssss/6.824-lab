@@ -1,0 +1,400 @@
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.8  3   35   10521    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.762s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   30    9471    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.617s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   29    9040    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.667s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.8  3   38   11623    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.835s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   30    9337    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.667s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6147    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.540s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6157    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.528s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   39   12178    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.739s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   31    9547    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.718s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.8  3   34   10290    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.770s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.8  3   38   11912    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.775s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   28    8592    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.685s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.8  3   39   12074    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.833s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   28    8710    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.615s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   30    9238    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.676s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6225    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.545s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6235    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.535s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   30    9625    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.655s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   30    9431    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.676s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   22    6899    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.617s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   22    6703    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.620s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   29    8895    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.688s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   25    7611    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.674s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   30    9442    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.659s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   30    9443    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.666s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   32   10081    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.678s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6277    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.506s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   30    9694    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.665s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   35   10711    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.685s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   29    9005    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.671s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   30    9218    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.665s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   38   11670    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.746s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.8  3   38   11742    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.783s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   30    9372    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.663s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   22    6888    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.618s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6195    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.519s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6159    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.526s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   18    5799    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.511s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   27    8269    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.662s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   26    7948    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.668s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   20    6179    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.610s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   22    6867    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.612s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.8  3   38   11685    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.769s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6142    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.508s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   32    9734    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.670s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6296    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.511s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   20    6238    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.615s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.8  3   37   11391    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.772s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   22    6730    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.611s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   30    9288    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.611s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   32    9951    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.681s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.8  3   35   10843    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.777s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   28    8781    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.609s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   30    9547    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.658s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6197    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.541s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   32    9904    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.689s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   22    6719    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.624s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.8  3   39   12092    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.846s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   18    5587    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.528s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6248    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.506s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6101    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.529s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   33   10169    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.749s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.8  3   39   11848    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.767s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6225    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.507s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6112    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.522s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   29    9227    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.670s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6157    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.520s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6283    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.533s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   37   11483    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.742s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.8  3   40   12284    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.839s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   27    8263    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.611s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   36   11136    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.692s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   31    9653    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.693s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   30    9316    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.684s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   22    6868    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.628s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.8  3   39   12087    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.833s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   32   10018    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.683s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6375    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.520s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   29    9004    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.677s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   27    8107    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.665s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   22    6792    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.612s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   24    7196    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.612s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   22    6835    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.614s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   30    9587    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.612s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   30    9430    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.664s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   30    9101    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.676s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   28    8546    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.666s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6187    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.523s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   33   10234    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.685s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6007    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.547s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   30    9022    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.672s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   31    9433    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.671s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6337    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.527s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   30    9673    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.669s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   29    8881    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.681s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6272    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.540s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.7  3   40   12041    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.736s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.5  3   20    6413    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.517s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.6  3   22    6704    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.615s
+Test (2B): concurrent Start()s ...
+  ... Passed --   0.8  3   42   13231    6
+PASS
+ok  	_/home/cs18/6.824/src/raft	0.839s

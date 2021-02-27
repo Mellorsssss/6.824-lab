@@ -1,0 +1,1454 @@
+2021/02/27 12:15:05 ==MAKE==0
+2021/02/27 12:15:05 ==MAKE==1
+2021/02/27 12:15:05 ==MAKE==2
+Test (2B): concurrent Start()s ...
+2021/02/27 12:15:05 ==ELECTION BEGIN== 1 begins, term is 1.
+2021/02/27 12:15:05 ==ELECTION BEGIN== 0 begins, term is 1.
+2021/02/27 12:15:05 ==ELECTION== 1 get 2's vote, has 2 votes now.
+2021/02/27 12:15:05 ==ELECTION== 1 becomes the leader.
+2021/02/27 12:15:05 ==AE IN== 1 ==> 2 at 1 with len 0 from 1
+2021/02/27 12:15:05 ==AE IN== 1 ==> 0 at 1 with len 0 from 1
+2021/02/27 12:15:05 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:05 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:05 ==AE IN== 1 ==> 2 at 1 with len 0 from 1
+2021/02/27 12:15:05 ==AE IN== 1 ==> 0 at 1 with len 0 from 1
+2021/02/27 12:15:05 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:05 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:05 ==START== 1 start 1
+2021/02/27 12:15:05 ==START== 1 start 2
+2021/02/27 12:15:05 ==START== 1 start 3
+2021/02/27 12:15:05 ==START== 1 start 4
+2021/02/27 12:15:05 ==START== 1 start 5
+2021/02/27 12:15:05 ==START== 1 start 6
+2021/02/27 12:15:05 ==AE IN== 1 ==> 2 at 1 with len 3 from 1
+2021/02/27 12:15:05 ==AE IN== 1 ==> 2 at 1 with len 3 from 1
+2021/02/27 12:15:05 ==AE IN== 1 ==> 0 at 1 with len 3 from 1
+2021/02/27 12:15:05 ==AE REPLY== 1 -> 2 success.next: 1 -> 4, match : 0 -> 3.
+2021/02/27 12:15:05 ==COMMIT== 0 -> 3
+2021/02/27 12:15:05 ==AE REPLY== 1 -> 0 success.next: 1 -> 4, match : 0 -> 3.
+2021/02/27 12:15:05 ==AE IN== 1 assign 2's 1
+2021/02/27 12:15:05 ==AE IN== 1 ==> 0 at 1 with len 3 from 1
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 1
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 2
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 3
+2021/02/27 12:15:05 ==AE IN== 1 ==> 0 at 1 with len 6 from 1
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 1
+2021/02/27 12:15:05 ==AE IN== 1 assign 2's 2
+2021/02/27 12:15:05 ==AE IN== 1 assign 2's 3
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 2
+2021/02/27 12:15:05 ==AE IN== 1 ==> 2 at 1 with len 6 from 1
+2021/02/27 12:15:05 ==AE IN== 1 assign 2's 1
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 3
+2021/02/27 12:15:05 ==AE IN== 1 assign 2's 2
+2021/02/27 12:15:05 ==AE IN== 1 assign 2's 3
+2021/02/27 12:15:05 ==AE IN== 1 ==> 0 at 1 with len 6 from 1
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 1
+2021/02/27 12:15:05 ==AE IN== 1 ==> 2 at 1 with len 3 from 4
+2021/02/27 12:15:05 ==AE IN== 1 assign 2's 4
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 2
+2021/02/27 12:15:05 ==AE IN== 1 assign 2's 5
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 3
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 4
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 5
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 6
+2021/02/27 12:15:05 ==AE IN== 1 assign 2's 6
+2021/02/27 12:15:05 ==AE IN== 1 ==> 0 at 1 with len 6 from 1
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 1
+2021/02/27 12:15:05 ==AE IN== 1 ==> 2 at 1 with len 3 from 4
+2021/02/27 12:15:05 ==AE IN== 1 assign 2's 4
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 2
+2021/02/27 12:15:05 ==AE IN== 1 assign 2's 5
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 3
+2021/02/27 12:15:05 ==AE IN== 1 assign 2's 6
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 4
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 5
+2021/02/27 12:15:05 ==AE REPLY== 1 -> 2 success.next: 4 -> 7, match : 3 -> 6.
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 6
+2021/02/27 12:15:05 ==COMMIT== 3 -> 6
+2021/02/27 12:15:05 ==AE IN== 1 ==> 2 at 1 with len 3 from 4
+2021/02/27 12:15:05 ==AE IN== 1 assign 2's 4
+2021/02/27 12:15:05 ==AE IN== 1 assign 2's 5
+2021/02/27 12:15:05 ==AE IN== 1 assign 2's 6
+2021/02/27 12:15:05 ==AE IN== 1 ==> 0 at 1 with len 6 from 1
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 1
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 2
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 3
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 4
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 5
+2021/02/27 12:15:05 ==AE IN== 1 assign 0's 6
+2021/02/27 12:15:05 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:05 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:05 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:05 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:05 ==COMMIT== 1 commits 1.
+2021/02/27 12:15:05 ==COMMIT== 0 commits 1.
+2021/02/27 12:15:05 ==COMMIT== 0 commits 2.
+2021/02/27 12:15:05 ==COMMIT== 0 commits 3.
+2021/02/27 12:15:05 ==COMMIT== 1 commits 2.
+2021/02/27 12:15:05 ==COMMIT== 1 commits 3.
+2021/02/27 12:15:05 ==COMMIT== 1 commits 4.
+2021/02/27 12:15:05 ==COMMIT== 1 commits 5.
+2021/02/27 12:15:05 ==COMMIT== 1 commits 6.
+2021/02/27 12:15:05 ==COMMIT== 2 commits 1.
+2021/02/27 12:15:05 ==COMMIT== 2 commits 2.
+2021/02/27 12:15:05 ==COMMIT== 2 commits 3.
+2021/02/27 12:15:05 ==COMMIT== 2 commits 4.
+2021/02/27 12:15:05 ==COMMIT== 2 commits 5.
+2021/02/27 12:15:05 ==COMMIT== 2 commits 6.
+2021/02/27 12:15:05 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:05 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:05 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:05 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:06 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:06 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:06 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:06 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:06 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:06 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:06 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:06 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:06 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:06 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:06 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:06 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:06 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:06 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:06 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:06 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:06 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:06 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:06 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:06 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:06 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:06 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:06 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:07 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:07 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:07 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:07 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:07 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:07 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:07 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:07 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:07 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:07 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:07 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:07 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:07 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:07 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:07 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:07 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:07 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:07 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:07 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:07 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:07 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:07 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:07 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:08 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:08 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:08 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:08 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:08 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:08 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:08 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:08 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:08 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:08 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:08 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:08 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:08 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:08 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:08 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:08 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:08 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:08 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:08 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:08 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:08 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:08 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:08 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:09 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:09 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:09 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:09 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:09 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:09 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:09 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:09 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:09 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:09 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:09 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:09 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:09 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:09 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:09 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:09 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:09 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:09 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:09 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:09 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:09 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:09 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:09 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:10 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:10 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:10 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:10 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:10 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:10 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:10 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:10 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:10 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:10 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:10 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:10 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:10 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:10 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:10 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:10 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:10 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:10 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:10 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:10 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:10 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:10 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:10 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:11 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:11 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:11 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:11 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:11 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:11 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:11 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:11 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:11 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:11 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:11 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:11 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:11 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:11 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:11 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:11 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:11 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:11 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:11 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:11 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:11 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:11 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:11 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:12 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:12 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:12 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:12 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:12 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:12 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:12 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:12 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:12 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:12 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:12 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:12 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:12 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:12 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:12 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:12 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:12 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:12 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:12 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:12 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:12 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:12 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:12 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:13 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:13 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:13 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:13 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:13 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:13 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:13 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:13 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:13 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:13 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:13 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:13 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:13 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:13 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:13 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:13 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:13 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:13 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:13 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:13 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:13 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:13 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:13 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:14 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:14 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:14 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:14 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:14 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:14 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:14 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:14 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:14 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:14 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:14 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:14 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:14 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:14 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:14 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:14 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:14 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:14 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:14 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:14 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:14 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:14 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:14 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:15 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:15 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:15 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:15 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:15 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:15 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:15 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:15 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:15 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:15 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:15 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:15 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:15 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:15 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:15 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:15 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:15 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:15 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:15 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:15 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:15 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:15 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:15 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:16 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:16 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:16 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:16 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:16 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:16 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:16 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:16 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:16 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:16 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:16 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:16 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:16 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:16 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:16 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:16 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:16 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:16 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:16 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:16 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:16 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:16 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:16 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:17 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:17 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:17 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:17 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:17 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:17 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:17 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:17 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:17 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:17 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:17 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:17 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:17 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:17 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:17 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:17 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:17 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:17 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:17 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:17 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:17 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:17 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:17 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:18 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:18 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:18 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:18 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:18 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:18 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:18 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:18 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:18 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:18 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:18 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:18 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:18 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:18 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:18 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:18 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:18 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:18 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:18 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:18 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:18 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:18 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:18 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:19 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:19 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:19 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:19 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:19 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:19 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:19 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:19 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:19 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:19 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:19 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:19 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:19 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:19 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:19 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:19 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:19 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:19 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:19 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:19 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:19 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:19 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:19 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:20 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:20 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:20 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:20 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:20 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:20 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:20 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:20 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:20 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:20 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:20 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:20 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:20 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:20 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:20 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:20 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:20 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:20 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:20 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:20 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:20 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:20 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:20 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:21 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:21 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:21 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:21 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:21 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:21 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:21 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:21 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:21 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:21 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:21 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:21 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:21 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:21 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:21 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:21 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:21 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:21 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:21 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:21 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:21 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:21 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:21 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:22 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:22 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:22 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:22 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:22 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:22 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:22 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:22 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:22 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:22 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:22 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:22 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:22 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:22 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:22 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:22 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:22 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:22 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:22 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:22 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:22 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:22 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:22 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:23 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:23 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:23 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:23 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:23 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:23 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:23 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:23 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:23 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:23 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:23 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:23 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:23 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:23 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:23 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:23 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:23 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:23 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:23 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:23 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:23 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:23 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:23 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:24 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:24 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:24 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:24 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:24 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:24 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:24 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:24 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:24 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:24 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:24 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:24 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:24 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:24 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:24 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:24 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:24 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:24 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:24 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:24 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:24 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:24 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:24 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:25 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:25 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:25 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:25 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:25 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:25 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:25 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:25 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:25 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:25 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:25 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:25 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:25 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:25 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:25 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:25 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:25 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:25 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:25 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:25 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:25 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:25 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:25 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:26 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:26 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:26 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:26 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:26 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:26 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:26 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:26 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:26 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:26 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:26 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:26 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:26 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:26 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:26 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:26 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:26 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:26 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:26 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:26 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:26 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:26 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:26 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:27 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:27 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:27 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:27 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:27 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:27 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:27 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:27 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:27 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:27 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:27 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:27 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:27 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:27 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:27 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:27 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:27 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:27 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:27 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:27 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:27 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:27 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:27 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:28 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:28 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:28 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:28 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:28 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:28 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:28 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:28 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:28 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:28 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:28 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:28 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:28 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:28 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:28 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:28 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:28 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:28 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:28 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:28 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:28 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:28 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:28 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:29 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:29 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:29 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:29 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:29 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:29 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:29 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:29 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:29 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:29 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:29 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:29 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:29 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:29 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:29 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:29 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:29 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:29 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:29 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:29 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:29 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:29 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:29 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:30 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:30 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:30 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:30 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:30 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:30 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:30 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:30 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:30 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:30 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:30 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:30 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:30 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:30 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:30 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:30 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:30 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:30 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:30 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:30 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:30 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:30 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:30 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:31 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:31 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:31 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:31 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:31 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:31 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:31 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:31 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:31 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:31 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:31 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:31 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:31 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:31 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:31 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:31 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:31 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:31 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:31 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:31 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:31 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:31 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:31 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:32 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:32 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:32 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:32 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:32 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:32 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:32 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:32 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:32 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:32 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:32 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:32 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:32 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:32 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:32 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:32 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:32 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:32 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:32 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:32 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:32 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:32 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:32 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:32 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:32 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:33 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:33 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:33 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:33 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:33 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:33 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:33 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:33 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:33 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:33 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:33 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:33 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:33 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:33 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:33 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:33 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:33 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:33 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:33 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:33 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:33 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:34 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:34 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:34 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:34 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:34 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:34 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:34 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:34 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:34 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:34 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:34 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:34 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:34 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:34 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:34 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:34 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:34 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:34 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:34 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:34 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:34 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:34 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:34 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:34 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:34 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:35 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:35 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:35 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:35 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:35 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:35 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:35 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:35 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:35 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:35 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:35 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:35 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:35 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:35 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:35 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:35 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:35 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:35 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:35 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:35 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:35 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:35 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:35 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:36 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:36 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:36 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:36 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:36 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:36 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:36 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:36 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:36 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:36 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:36 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:36 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:36 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:36 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:36 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:36 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:36 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:36 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:36 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:36 ==HEART BEAT== 1 -> 0 success.
+2021/02/27 12:15:36 ==AE IN== 1 ==> 2 at 1 with len 0 from 7
+2021/02/27 12:15:36 ==HEART BEAT== 1 -> 2 success.
+2021/02/27 12:15:36 ==AE IN== 1 ==> 0 at 1 with len 0 from 4
+2021/02/27 12:15:36 ==HEART BEAT== 1 -> 0 success.
+--- FAIL: TestConcurrentStarts2B (31.34s)
+    config.go:413: only 2 decided for Index 4; wanted 3
+FAIL
+exit status 1
+FAIL	_/home/cs18/6.824/src/raft	31.347s
