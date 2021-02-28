@@ -321,6 +321,7 @@ type AppendEntriesReply struct {
 	Success       bool
 	ConflictTerm  int // if true, then MatchIndex indicates the first index in that term
 	ConflictIndex int
+	ParameValid bool
 }
 
 func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply) {
@@ -331,6 +332,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 
 	// prepare the args
 	reply.Term = rf.CurrentTerm
+	reply.ParameValid = false
 
 	// reject the RPC if args.Term is smaller
 	if args.Term < rf.CurrentTerm {
@@ -340,7 +342,9 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 
 	DPrintf("==AE IN== %v ==> %v at %v with len %v from %v", args.LeaderId, rf.me, args.Term, len(args.Entries), args.PrevLogIndex+1)
 
-	rf.heartBeatCh <- 1
+	if rf.state!=Leader{
+		rf.heartBeatCh <- 1
+	}
 
 	// args.Term is at least as large as CurrentTerm, so convert to Follower
 	if args.Term > rf.CurrentTerm {
@@ -350,6 +354,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 		rf.state = Follower
 	}
 
+	reply.ParameValid = true
 	// if no LogEntry matches, return false
 	if len(rf.Log) <= args.PrevLogIndex {
 		reply.Success = false
@@ -372,19 +377,17 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 		return
 	}
 
+	lastNewEntryIndex := max(args.PrevLogIndex, rf.commitIndex)
+
 	// append new entries
 	if len(args.Entries) > 0 {
-		// detect if rf has all the args.Entry
-		//if args.Entries[len(args.Entries)-1].Index<len(rf.Log){
-		//	DPrintf("==AE IN== %v has all the %v's entries, %v might be older leader.", rf.me, args.LeaderId, args.LeaderId)
-		//}else{
-		// has new entries to append
 		for ind, log := range args.Entries {
 			curIndex := args.Entries[ind].Index
 			// don't need to compare, append for once
 			if len(rf.Log) <= curIndex {
 				rf.Log = append(rf.Log, args.Entries[ind:]...)
 				rf.persist()
+				lastNewEntryIndex = args.Entries[len(args.Entries)-1].Index
 				break
 			}
 
@@ -397,25 +400,26 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 				rf.Log = rf.Log[:curIndex]
 				DPrintf("==DEBUG== truncate %v", rf.me)
 				rf.Log = append(rf.Log, args.Entries[ind:]...)
+				lastNewEntryIndex = args.Entries[len(args.Entries)-1].Index
 				rf.persist()
 				break
 			}
 
 			//rf.Log[curIndex] = log
 			DPrintf("==AE IN== %v assign %v's %v", args.LeaderId, rf.me, curIndex)
-			rf.persist()
 		}
 		//}
 	}
 
 	// update the commitIndex
 	if args.LeaderCommit > rf.commitIndex {
-		if len(args.Entries) > 0 {
-			lastNewEntryIndex := args.Entries[len(args.Entries)-1].Index
-			rf.commitIndex = min(args.LeaderCommit, lastNewEntryIndex)
-		} else {
-			rf.commitIndex = min(args.LeaderCommit, max(args.PrevLogIndex, rf.commitIndex))
-		}
+		//if len(args.Entries) > 0 {
+		//	lastNewEntryIndex := args.Entries[len(args.Entries)-1].Index
+		//	rf.commitIndex = min(args.LeaderCommit, lastNewEntryIndex)
+		//} else {
+		//	rf.commitIndex = min(args.LeaderCommit, max(args.PrevLogIndex, rf.commitIndex))
+		//}
+		rf.commitIndex = min(args.LeaderCommit, lastNewEntryIndex)
 	}
 
 	reply.Success = true
@@ -439,68 +443,88 @@ func (rf *Raft) sendHeartBeats() {
 			continue
 		}
 		temInd := ind
+		// update in inner, for these values my change
 		rf.mu.Lock()
 		copyTerm := rf.CurrentTerm
 		copyCommitIndex := rf.commitIndex
 		copyPrevLogIndex := rf.nextIndex[temInd] - 1
 		copyPrevLogTerm := rf.Log[copyPrevLogIndex].Term
+		// get the Entries
+
+		var targetLog []LogEntry
+		var copyLog []LogEntry
+		if rf.Log[len(rf.Log)-1].Term == rf.CurrentTerm && len(rf.Log)>rf.nextIndex[temInd]{
+			DPrintf("==HEART BEAT== %v has logs from %v to %v to send to %v.", rf.me, rf.nextIndex[temInd], len(rf.Log)-1,temInd)
+			targetLog = rf.Log[rf.nextIndex[temInd]:]
+		}else{
+			DPrintf("==HEART BEAT== %v send heart beat to %v.", rf.me, temInd)
+			targetLog = make([]LogEntry, 0)
+		}
+
+		copyLog = make([]LogEntry, len(targetLog))
+		copy(copyLog, targetLog)
 		rf.mu.Unlock()
 		go func() {
-			args := AppendEntriesArgs{
-				copyTerm,
-				rf.me,
-				copyPrevLogIndex, copyPrevLogTerm, make([]LogEntry, 0), copyCommitIndex}
-			reply := AppendEntriesReply{}
+			for {
+				args := AppendEntriesArgs{
+					copyTerm,
+					rf.me,
+					copyPrevLogIndex, copyPrevLogTerm, copyLog, copyCommitIndex}
+				reply := AppendEntriesReply{}
+				ok := rf.sendAppendEntries(temInd, &args, &reply)
+				rf.mu.Lock()
 
-			//defer rf.mu.Unlock()
-			// check the assumptions
-			ok := rf.sendAppendEntries(temInd, &args, &reply)
-			rf.mu.Lock()
+				// check the assumptions
+				if rf.killed() || rf.CurrentTerm != copyTerm || rf.state != Leader  || rf.Log[copyPrevLogIndex].Term != copyPrevLogTerm||rf.nextIndex[temInd] != copyPrevLogIndex+1 {
+					DPrintf("==AE REPLY== fail check")
+					rf.mu.Unlock()
+					return
+				}
 
-			// check the assumptions
-			if copyPrevLogIndex >= len(rf.Log) {
-				DPrintf("%v, %v=============BIG MISTAKE!==============%v > %v", rf.me, temInd, copyPrevLogIndex, len(rf.Log))
-			}
+				if !ok {
+					rf.mu.Unlock()
+					time.Sleep(100 * time.Millisecond)
+					continue
+				}
 
-			if rf.killed() || rf.CurrentTerm != copyTerm || rf.state != Leader || rf.nextIndex[temInd] != copyPrevLogIndex+1 || rf.Log[copyPrevLogIndex].Term != copyPrevLogTerm {
-				//DPrintf("==HEART BEAT== fail check, prev term: %v, current term:%v", copyTerm, rf.CurrentTerm)
+				if reply.Success {
+					DPrintf("==AE REPLY== %v -> %v success.next: %v -> %v, match : %v -> %v.", rf.me, temInd, rf.nextIndex[temInd], args.PrevLogIndex+len(args.Entries)+1, rf.matchIndex[temInd], args.PrevLogIndex+len(args.Entries))
+					rf.nextIndex[temInd] = args.PrevLogIndex + len(args.Entries) + 1 //len(rf.Log)
+					rf.matchIndex[temInd] = args.PrevLogIndex + len(args.Entries)    //len(rf.Log) - 1
+					rf.mu.Unlock()
+					rf.updateCommitIndex()
+					return
+				}
+
+				// fail for the out of date
+				if reply.Term > rf.CurrentTerm {
+					DPrintf("==AE REPLY== %v get bigger term", rf.me)
+					rf.CurrentTerm = reply.Term
+					rf.state = Follower
+					rf.persist()
+					rf.mu.Unlock()
+					return
+				}
+
+				lastEntry, ok := rf.findLastLogInTerm(reply.ConflictTerm)
+				if ok {
+					rf.nextIndex[temInd] = lastEntry + 1
+					DPrintf("==AE REPLY==%v -> %v  fail.nextIndex %v : %v -> %v", rf.me, temInd, temInd, args.PrevLogIndex+1, rf.nextIndex[temInd])
+				} else {
+					rf.nextIndex[temInd] = reply.ConflictIndex
+					DPrintf("==AE REPLY==%v -> %v fail.nextIndex %v : %v -> %v", rf.me, temInd, temInd, args.PrevLogIndex+1, rf.nextIndex[temInd])
+				}
+
+				// prepare the args for next RPC
+				copyPrevLogIndex = rf.nextIndex[temInd] - 1
+				copyPrevLogTerm = rf.Log[copyPrevLogIndex].Term
+
+				targetLog := rf.Log[rf.nextIndex[temInd]:]
+				copyLog = make([]LogEntry, len(targetLog))
+				copy(copyLog, targetLog)
 				rf.mu.Unlock()
-				return
+				time.Sleep(100 * time.Millisecond)
 			}
-
-			if !ok {
-				//DPrintf("==HEARTBEAT== RPC fail.")
-				rf.mu.Unlock()
-				return
-			}
-
-			if reply.Success {
-				DPrintf("==HEART BEAT== %v -> %v success.", rf.me, temInd)
-				rf.mu.Unlock()
-				return
-			}
-
-			// fail for the out of date
-			if reply.Term > rf.CurrentTerm {
-				DPrintf("==HEART BEAT== %v get bigger term : %v > %v", rf.me, reply.Term, rf.CurrentTerm)
-				rf.CurrentTerm = reply.Term
-				rf.state = Follower
-				rf.persist()
-				rf.mu.Unlock()
-				return
-			}
-
-			// updates the args
-			lastEntry, ok := rf.findLastLogInTerm(reply.ConflictTerm)
-			if ok {
-				rf.nextIndex[temInd] = lastEntry + 1
-				DPrintf("==HEART BEAT== %v sets nextIndex %v : %v -> %v", rf.me, temInd, args.PrevLogIndex+1, rf.nextIndex[temInd])
-			} else {
-				rf.nextIndex[temInd] = reply.ConflictIndex
-				DPrintf("==HEART BEAT== %v sets nextIndex %v : %v -> %v", rf.me, temInd, args.PrevLogIndex+1, rf.nextIndex[temInd])
-			}
-
-			rf.mu.Unlock()
 		}()
 	}
 }
@@ -794,7 +818,7 @@ func (rf *Raft) notifyCommit() {
 		if rf.commitIndex > rf.lastApplied {
 			for ind := rf.lastApplied + 1; ind <= rf.commitIndex; ind++ {
 				DPrintf("==COMMIT== %v commits %v.", rf.me, ind)
-				rf.applyChanel <- ApplyMsg{true, rf.Log[ind].Command, ind}
+				rf.applyChanel <- ApplyMsg{true, rf.Log[ind].Command, rf.Log[ind].Index}
 			}
 			rf.lastApplied = rf.commitIndex
 		}
@@ -836,7 +860,7 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 	rf.Log = append(rf.Log, LogEntry{term, index, command})
 	rf.persist()
 	DPrintf("==START== %v start %v", rf.me, index)
-	go rf.getAgreement()
+	//go rf.getAgreement()
 
 	return index, term, isLeader
 }

@@ -9,13 +9,13 @@ package raft
 //
 
 import (
+	"sync"
 	"sync/atomic"
 	"testing"
 )
 import "fmt"
 import "time"
 import "math/rand"
-import "sync"
 
 // The tester generously allows solutions to complete elections in one second
 // (much more than the paper's range of timeouts).
@@ -550,6 +550,7 @@ loop:
 
 	cfg.end()
 }
+
 
 func TestPersist12C(t *testing.T) {
 	servers := 3

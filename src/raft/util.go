@@ -3,7 +3,7 @@ package raft
 import "log"
 
 // Debugging
-var Debug =0
+var Debug = 0
 func EnableOnDebug(){
 	Debug = 1
 }
